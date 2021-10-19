@@ -8,10 +8,9 @@ part of 'user.dart';
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
       createdAt: json['createdAt'] as int?,
-      firstName: json['firstName'] as String?,
-      id: json['id'] as String,
-      imageUrl: json['imageUrl'] as String?,
-      lastName: json['lastName'] as String?,
+      uid: json['uid'] as String,
+      photoProfile: json['photoProfile'] as String?,
+      name: json['name'] as String?,
       lastSeen: json['lastSeen'] as int?,
       metadata: json['metadata'] as Map<String, dynamic>?,
       role: _$enumDecodeNullable(_$RoleEnumMap, json['role']),
@@ -20,10 +19,9 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'createdAt': instance.createdAt,
-      'firstName': instance.firstName,
-      'id': instance.id,
-      'imageUrl': instance.imageUrl,
-      'lastName': instance.lastName,
+      'uid': instance.uid,
+      'photoProfile': instance.photoProfile,
+      'name': instance.name,
       'lastSeen': instance.lastSeen,
       'metadata': instance.metadata,
       'role': _$RoleEnumMap[instance.role],

@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'messages/custom_message.dart';
-import 'messages/file_message.dart';
 import 'messages/image_message.dart';
 import 'messages/text_message.dart';
 import 'messages/unsupported_message.dart';
@@ -38,8 +37,6 @@ abstract class Message extends Equatable {
     switch (type) {
       case 'custom':
         return CustomMessage.fromJson(json);
-      case 'file':
-        return FileMessage.fromJson(json);
       case 'image':
         return ImageMessage.fromJson(json);
       case 'text':

@@ -14,10 +14,9 @@ class User extends Equatable {
   /// Creates a user.
   const User({
     this.createdAt,
-    this.firstName,
-    required this.id,
-    this.imageUrl,
-    this.lastName,
+    required this.uid,
+    this.photoProfile,
+    this.name,
     this.lastSeen,
     this.metadata,
     this.role,
@@ -31,25 +30,23 @@ class User extends Equatable {
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
   /// Creates a copy of the user with an updated data.
-  /// [firstName], [imageUrl], [lastName], [lastSeen], [role] and [updatedAt]
+  /// [photoProfile], [name], [lastSeen], [role] and [updatedAt]
   /// with null values will nullify existing values.
   /// [metadata] with null value will nullify existing metadata, otherwise
   /// both metadatas will be merged into one Map, where keys from a passed
   /// metadata will overwite keys from the previous one.
   User copyWith({
-    String? firstName,
-    String? imageUrl,
-    String? lastName,
+    String? photoProfile,
+    String? name,
     int? lastSeen,
     Map<String, dynamic>? metadata,
     Role? role,
     int? updatedAt,
   }) {
     return User(
-      firstName: firstName,
-      id: id,
-      imageUrl: imageUrl,
-      lastName: lastName,
+      uid: uid,
+      photoProfile: photoProfile,
+      name: name,
       lastSeen: lastSeen,
       metadata: metadata == null
           ? null
@@ -64,32 +61,20 @@ class User extends Equatable {
 
   /// Equatable props
   @override
-  List<Object?> get props => [
-        createdAt,
-        firstName,
-        id,
-        imageUrl,
-        lastName,
-        lastSeen,
-        metadata,
-        role,
-        updatedAt
-      ];
+  List<Object?> get props =>
+      [createdAt, uid, photoProfile, name, lastSeen, metadata, role, updatedAt];
 
   /// Created user timestamp, in ms
   final int? createdAt;
 
-  /// First name of the user
-  final String? firstName;
-
   /// Unique ID of the user
-  final String id;
+  final String uid;
 
   /// Remote image URL representing user's avatar
-  final String? imageUrl;
+  final String? photoProfile;
 
   /// Last name of the user
-  final String? lastName;
+  final String? name;
 
   /// Timestamp when user was last visible, in ms
   final int? lastSeen;
